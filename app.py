@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, send_file, send_from_directory
 import src.generator as gen
 import src.export_to_pdf as exp
+from flask_cors import CORS
 
-import os 
-print(os.getcwd())
 app = Flask(__name__, static_folder='output')
+CORS(app)
+
 
 @app.route('/')
 def index():
