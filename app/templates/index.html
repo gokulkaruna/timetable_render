@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/generate" method="post">
+            <div class="row">
+                <p class="display-6 mt-5">Timetable Generator</p>
+                <hr>
+                <p class="fs-4 lead">Enter the below details:</p>
+
+                <div class="col-md-3">
+                    <label class="form-label"><span class="fw-bold">Sections</span>
+                        <p class="text-muted fst-italic">eg: "S1"</p>
+                    </label>
+                    <textarea name="sections" class="form-control" rows="8" required></textarea>
+                </div>
+                <div class="col-md-3 offset-md-1">
+                    <label class="form-label"><span class="fw-bold">Teacher - Course</span>
+                        <p class="text-muted fst-italic">eg: "John-Science"</p>
+                    </label>
+                    <textarea name="teacher_course" class="form-control" rows="8" required></textarea>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary " type="submit">Generate</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
