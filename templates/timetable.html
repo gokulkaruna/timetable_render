@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,21 +12,29 @@
         crossorigin="anonymous">
 
 </head>
+
 <body>
     <div class="container">
-        <h1>Generated Timetable</h1>
+        <nav class="navbar">
+            <span class="fs-3">Timetable Generator</span>
+            <img src="{{url_for('static', filename='logo.png')}}" alt="Logo" width="120" height="60"
+                class="d-inline-block align-text-top">
+        </nav>
         <hr>
+    </div>
+    <div class="container">
+        <p class="fs-3 lead pt-4 text-success">Timetable Generated Successfully!</p>
         <div>
             <p class="fw-bold fs-4">
                 Sections :
             </p>
             <div>
                 {%for i in sections%}
-                    <div class="lead">
-                        <span>
-                            {{i[0]}}
-                        </span>
-                    </div>
+                <div class="lead">
+                    <span>
+                        {{i[0]}}
+                    </span>
+                </div>
                 {%endfor%}
             </div>
         </div>
@@ -36,11 +45,11 @@
             </p>
             <div>
                 {%for i in teacher_course%}
-                    <div class="lead">
-                        <span>
-                            {{i[0]}} - {{i[1]}}
-                        </span>
-                    </div>
+                <div class="lead">
+                    <span>
+                        {{i[0]}} - {{i[1]}}
+                    </span>
+                </div>
                 {%endfor%}
             </div>
         </div>
@@ -52,4 +61,5 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
