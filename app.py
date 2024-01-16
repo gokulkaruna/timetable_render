@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, send_file, send_from_directory
+from flask import Flask, render_template, request, send_from_directory
 import src.generator as gen
 import src.export_to_pdf as exp
+import re
 from flask_cors import CORS
 
 app = Flask(__name__, static_folder='output')
@@ -20,6 +21,7 @@ def get_formdata():
         print(type(request.form["sections"]))
         print(request.form["teacher_course"])
 
+        pattern = re.compile("^[a-zA-Z\s]+\-[a-zA-Z\s]+\-[a-zA-Z]+$")
         teacher_courses = []
         sections = []
         abb = {}
@@ -30,10 +32,13 @@ def get_formdata():
         sections = [[i.strip()] for i in sec]
 
         for i in teach_cour:
-            teacher, course, abrv = i.split("-")
-            teacher_courses.append([teacher.strip(), course.strip()])
-            abb[course] = [abrv, teacher]
-
+            if re.match(pattern,i):
+                teacher, course, abrv = i.split("-")
+                teacher_courses.append([teacher.strip(), course.strip()])
+                abb[course] = [abrv, teacher]
+            else:
+                return render_template('error.html')
+            
         print(sections)
         print(teacher_courses)
         abb["Short Break"] = ["Short Break", "-"]
@@ -42,10 +47,9 @@ def get_formdata():
         x = gen.generate_timetable(sections,teacher_courses)
         print(x)
         exp.export_pdf(x, sections, abb)
+        return render_template('timetable.html', sections=sections, teacher_course=teacher_courses)
 
 
-
-    return render_template('timetable.html', sections=sections, teacher_course=teacher_courses)
 
 @app.route('/download')
 def download_file():
