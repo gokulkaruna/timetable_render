@@ -18,7 +18,7 @@ def generate_timetable(sec, teacher_courses):
         teachers.append(teachers_list[i][0])
     courses_set = list(set(courses))
 
-    #All subjects with no how many times it will be studied in a week
+    #All subjects with number of how many times it will be studied in a week
     subjects_no_dict = {}
     for i in range(0,len(courses_set)):
         for j in range(0,len(courses_with_no_list)):
@@ -38,7 +38,6 @@ def generate_timetable(sec, teacher_courses):
         teachers_with_week_duties[teachers[i]] = array
 
     all_classes_timetable_array = []
-    #print(teachers_with_subjects)
     for clas in range(0,len(sections)):
         # 5 days and 7 timeslots
         timetable_matrix = np.empty([5, 8] , dtype=object)
@@ -51,7 +50,7 @@ def generate_timetable(sec, teacher_courses):
         for j in range(0,len(courses_set)):
             courses_no_per_week[courses_set[j]] = subjects_no_dict[courses_set[j]]
 
-        print("Week Time Table for","class: ",sections[clas])
+        print("Weekly Time Table for class: ",sections[clas])
         for day in range(0,5):
             if all(value == 0 for value in courses_no_per_week.values()):
                 break

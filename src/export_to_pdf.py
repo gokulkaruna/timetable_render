@@ -1,7 +1,6 @@
 import fpdf
 
 def export_pdf(all_classes_timetable_array, sections, abreviations):
-    print("In pdf")
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     timing = ["08:00 - 09:00", "09:00 - 10:00", "10:00 - 10:30", "10:30 - 11:30", "11:30 - 12:30", "12:30 - 13:15", "13:15 - 14:15", "14:15 - 15:15"]
     dummy = ["Course", "Abbreviation", "Faculty"]
