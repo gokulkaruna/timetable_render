@@ -45,7 +45,7 @@ def get_formdata():
 
 @app.route('/download')
 def download_file():
-    return send_from_directory(app.static_folder, 'timetable.pdf')
+    return send_from_directory(app.static_folder, 'timetable.pdf',as_attachment=True)
     
 if __name__ == '__main__':
     app.run(debug=True)
